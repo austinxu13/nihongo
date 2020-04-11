@@ -1,0 +1,126 @@
+% ============================================================================
+% Purpose: Template for Chinese documents
+% ============================================================================
+
+\documentclass[12pt,a4paper]{article}
+%\documentclass[12pt,letter]{article}
+% For two column text, add "twocolumn" as an option to the document
+% class. Also uncomment the two "onecolumn" and "twocolumn" lines
+% around the title page below.
+
+% Variables that controls behaviour
+\usepackage{ifthen} % for conditional statements
+\newboolean{pdflatex}
+\setboolean{pdflatex}{false} % False for eps figures 
+
+\newboolean{articletitles}
+\setboolean{articletitles}{true} % False removes titles in references
+
+\newboolean{uprightparticles}
+\setboolean{uprightparticles}{false} %True for upright particle symbols
+
+\newboolean{inbibliography}
+\setboolean{inbibliography}{false} %True once you enter the bibliography
+
+% Define titles and authors here.
+% It will then be used both in metadata and in
+% what is printed on the front page.
+\def\papertitle{日本語の記録} % Latex formatted title
+\def\paperauthors{许傲} % Leave as is for PAPER, CONF and FIGURE
+\def\paperkeywords{{High Energy Physics}, {LHCb}} % Comma separated list
+
+% packages and configurations
+\input{preamble}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Title     %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{1}
+
+% %%%%%%% CHOOSE TITLE PAGE--------
+%\onecolumn
+\input{title}
+\clearpage
+%\twocolumn
+% %%%%%%%%%%%%% ---------
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  Table of Content   %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Uncomment next 2 lines if desired
+%\tableofcontents
+%\input{alternate}
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Main text %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{plain}
+\setcounter{page}{1} % restore page numbers for the main text
+\pagenumbering{arabic}
+
+% Uncomment during review phase. 
+% Comment before a final submission.
+%\linenumbers
+
+% For larger papers it is desirable to split the text into
+% several semiautonomous files, which can be revised independently.
+
+\input{expressions}
+\clearpage
+
+\input{noun}
+\clearpage
+
+\input{verb}
+\clearpage
+
+\input{adj}
+\clearpage
+
+\input{adjverb}
+\clearpage
+
+\input{auxverb}
+\clearpage
+
+\input{aux}
+\clearpage
+
+\input{sentence}
+\clearpage
+
+\twocolumn
+\setlength{\columnseprule}{0.4pt}
+\input{words}
+
+
+%%%%%%%%%%%%%%%%%%%%
+%%% Bibliography %%%
+%%%%%%%%%%%%%%%%%%%%
+%\clearpage
+%\addcontentsline{toc}{section}{参考文献}
+%\renewcommand\refname{参考文献}
+%\setboolean{inbibliography}{true}
+%\bibliographystyle{LHCb}
+%\bibliography{bibs/main,bibs/standard,bibs/LHCb-PAPER,bibs/LHCb-CONF,bibs/LHCb-DP,bibs/LHCb-TDR}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Supplementary %%%
+%%%%%%%%%%%%%%%%%%%%%
+%\input{supplementary}
+ 
+%\clearpage
+%\newpage
+%\input{LHCb_Authorship_30-Jul-2019}
+
+\end{document}

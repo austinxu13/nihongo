@@ -1,0 +1,165 @@
+% This file contains all the default packages and modifications
+% for LHCb formatting
+
+%% %%%%%%%%%%%%%%%%%%
+%%  Page formatting
+%% %%%%%%%%%%%%%%%%%%
+%%\usepackage[margin=1in]{geometry}
+\usepackage[top=1.5in, bottom=1.5in, left=1in, right=1in]{geometry}
+%\usepackage[top=1.5in, bottom=2in, left=1.35in, right=1.35in]{geometry}
+
+% fallback for manual settings... uncomment if the geometry package is not available
+%\voffset=-11mm
+%\textheight=220mm
+%\textwidth=160mm
+%\oddsidemargin=0mm
+%\evensidemargin=0mm
+
+\columnsep=5mm
+\addtolength{\belowcaptionskip}{0.5em}
+
+\renewcommand{\textfraction}{0.01}
+\renewcommand{\floatpagefraction}{0.8} % changed from 0.99
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+
+\renewcommand{\baselinestretch}{1.5}
+
+%\usepackage{setspace}
+%\setstretch{1.50}
+
+% Allow the page size to vary a bit
+\raggedbottom
+% To avoid Latex to be too fussy with line breaking
+\sloppy
+
+%% %%%%%%%%%%%%%%%%%%%%%
+%% Packages to be used
+%% %%%%%%%%%%%%%%%%%%%%% 
+\usepackage{microtype}
+\usepackage{lineno}  % for line numbering during review
+\usepackage{xspace} % To avoid problems with missing or double spaces after predefined symbold
+\usepackage{caption} %these three command get the figure and table captions automatically small
+\renewcommand{\captionfont}{\small}
+\renewcommand{\captionlabelfont}{\small}
+
+%% Graphics
+\usepackage{graphicx}  % to include figures (can also use other packages)
+\usepackage{color}
+\usepackage{colortbl}
+\graphicspath{{./figs/}} % Make Latex search fig subdir for figures
+\DeclareGraphicsExtensions{.pdf,.PDF,png,.PNG}
+
+%% Math
+\usepackage{amsmath} % Adds a large collection of math symbols
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{upgreek} % Adds in support for greek letters in roman typeset
+
+%% fix to allow peaceful coexistence of line numbering and
+%% mathematical objects
+%% http://www.latex-community.org/forum/viewtopic.php?f=5&t=163
+\newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+\expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+\expandafter\let\csname oldend#1\expandafter\endcsname\csname
+end#1\endcsname
+ \renewenvironment{#1}%
+   {\linenomath\csname old#1\endcsname}%
+   {\csname oldend#1\endcsname\endlinenomath}%
+}
+\newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+  \patchAmsMathEnvironmentForLineno{#1}%
+  \patchAmsMathEnvironmentForLineno{#1*}%
+}
+\AtBeginDocument{%
+\patchBothAmsMathEnvironmentsForLineno{equation}%
+\patchBothAmsMathEnvironmentsForLineno{align}%
+\patchBothAmsMathEnvironmentsForLineno{flalign}%
+\patchBothAmsMathEnvironmentsForLineno{alignat}%
+\patchBothAmsMathEnvironmentsForLineno{gather}%
+\patchBothAmsMathEnvironmentsForLineno{multline}%
+\patchBothAmsMathEnvironmentsForLineno{eqnarray}%
+}
+
+% Get hyperlinks to captions and in references.
+% These do not work with revtex. Use "hypertext" as class option instead.
+\usepackage{hyperref}
+\usepackage[all]{hypcap} % Internal hyperlinks to floats.
+
+% overleaf comments
+\usepackage[colorinlistoftodos,textsize=scriptsize]{todonotes}
+
+
+% for number display
+\usepackage{siunitx}
+\sisetup{separate-uncertainty}
+
+% For table format
+\usepackage{makecell}
+
+% multiple reference
+\usepackage{cleveref}
+
+% rotate tables
+\usepackage{rotating}
+
+\usepackage{longtable} % only for template; not usually to be used in PAPERs
+
+% Chinese
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{xpinyin}
+\usepackage{ruby}
+\renewcommand{\rubysize}{0.75}
+\setCJKmainfont{STSong}
+\setCJKmainfont[BoldFont={STHeiti}, ItalicFont={STKaiti}]{STSong}
+%  \setCJKmainfont[BoldFont={STXihei}, ItalicFont={STXingkai}]{STSong}
+%  \setCJKsansfont{STXihei}
+%  \setCJKmonofont{STXingkai}
+\setCJKfamilyfont{song}{STSong}
+\setCJKfamilyfont{hei}{STHeiti}
+\setCJKfamilyfont{fs}{STFangsong}
+%\setCJKfamilyfont{kai}{STXingkai}
+%\setCJKfamilyfont{li}{STLiti} % todo: 用隶书字体代替
+%\setCJKfamilyfont{you}{Yuanti SC} % todo: 用幼圆字体代替
+%\setmainfont{Times New Roman}
+%\setsansfont{Arial}
+%\setmonofont{Courier New}
+\newcommand{\song}{\CJKfamily{song}}    % 宋体
+\def\songti{\song}
+\newcommand{\fsong}{\CJKfamily{fs}}     % 仿宋体
+\def\fangsong{\fsong}
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
+\def\kaishu{\kai}
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
+\def\heiti{\hei}
+\newcommand{\li}{\CJKfamily{li}}        % 隶书
+\def\lishu{\li}
+\newcommand{\you}{\CJKfamily{you}}      % 幼圆
+\def\youyuan{\you}
+\newcommand{\xiaosi}{\fontsize{12bp}{14.4bp}\selectfont}
+
+
+\newtheorem{definition}{定义}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}{引理}[section]
+\renewcommand\abstractname{摘要}
+\renewcommand\contentsname{目录}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+
+\usepackage{extarrows}
+
+\usepackage{enumerate}
+
+\usepackage{booktabs}
+
+\usepackage{multirow}
+
+\def \cn[#1] {\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {#1}}}}
+
+\usepackage{supertabular}
+
+\usepackage{tabularx}
+

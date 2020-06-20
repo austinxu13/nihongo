@@ -113,7 +113,7 @@
 \contentsline {section}{\numberline {11}新しい単語}{43}{section.11}
 \contentsline {subsection}{\numberline {11.1}名詞}{43}{subsection.11.1}
 \contentsline {subsection}{\numberline {11.2}動詞}{49}{subsection.11.2}
-\contentsline {subsection}{\numberline {11.3}形容詞}{51}{subsection.11.3}
-\contentsline {subsection}{\numberline {11.4}形容動詞}{52}{subsection.11.4}
-\contentsline {subsection}{\numberline {11.5}副詞}{53}{subsection.11.5}
-\contentsline {subsection}{\numberline {11.6}其它}{54}{subsection.11.6}
+\contentsline {subsection}{\numberline {11.3}形容詞}{52}{subsection.11.3}
+\contentsline {subsection}{\numberline {11.4}形容動詞}{53}{subsection.11.4}
+\contentsline {subsection}{\numberline {11.5}副詞}{54}{subsection.11.5}
+\contentsline {subsection}{\numberline {11.6}其它}{55}{subsection.11.6}

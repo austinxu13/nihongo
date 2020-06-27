@@ -42,4 +42,4 @@ else:
     # do latex twice to make sure that all cross-references are updated
     os.system( BUILDCOMMAND )
     # cp temporary main.pdf to target.
-    os.system( 'cp {0}{1} ../{2}'.format(MAIN,MAINEXT,OUTPUT) )
+    os.system( 'cp {0}{1} {2}'.format(MAIN,MAINEXT,OUTPUT) )
